@@ -1,14 +1,16 @@
 import fs from 'fs'
+import path from 'path';
 
-const FIRST_TITLE = 'short-list_20.12.2022.json'
-const SECOND_TITLE = 'short-list_21.12.2022.json'
+const FIRST_TITLE = 'short-list_21.12.2022.json'
+const SECOND_TITLE = 'short-list_21.12.2022-1.json'
 
-const firstList = JSON.parse(fs.readFileSync(FIRST_TITLE))
-const secondList = JSON.parse(fs.readFileSync(SECOND_TITLE))
+const firstList = JSON.parse(fs.readFileSync(path.join('.', 'lists', FIRST_TITLE)))
+const secondList = JSON.parse(fs.readFileSync(path.join('.', 'lists', SECOND_TITLE)))
 
 const getDiff = ({ firstList, secondList }) =>
   firstList
     .filter(x => !secondList.includes(x))
     .concat(secondList.filter(x => !firstList.includes(x)))
 
-console.log(getDiff({ firstList, secondList }));
+const diff = getDiff({ firstList, secondList })
+console.log(diff.length ? diff : 'There is no diff!' );
