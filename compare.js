@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path';
 
-const FIRST_TITLE = 'short-list_21.12.2022.json'
-const SECOND_TITLE = 'short-list_25.12.2022.json'
+const FIRST_TITLE = 'short-list_25.12.2022.json'
+const SECOND_TITLE = 'short-list_11.01.2023.json'
 
 const firstList = JSON.parse(fs.readFileSync(path.join('.', 'lists', FIRST_TITLE)))
 const secondList = JSON.parse(fs.readFileSync(path.join('.', 'lists', SECOND_TITLE)))
